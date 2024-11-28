@@ -9,30 +9,28 @@
 <body class="bg-light">
     <div class="container my-5">
         <h1 class="text-center mb-4">Add a New Material</h1>
-        <form method="POST" action="/add" class="p-4 bg-white shadow rounded">
+        <form method="POST" action="/add">
             <div class="mb-3">
                 <label for="matrikelnummer" class="form-label">Matrikelnummer</label>
                 <input type="text" class="form-control" id="matrikelnummer" name="matrikelnummer" required>
             </div>
             <div class="mb-3">
-                <label for="material" class="form-label">Material</label>
-                <input type="text" class="form-control" id="material" name="material" required>
+                <label for="bezeichnung" class="form-label">Bezeichnung</label>
+                <input type="text" class="form-control" id="bezeichnung" name="bezeichnung" required>
             </div>
-            <div class="row">
-                <div class="col-md-4 mb-3">
-                    <label for="laenge" class="form-label">Länge</label>
-                    <input type="number" class="form-control" id="laenge" name="laenge" required>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="breite" class="form-label">Breite</label>
-                    <input type="number" class="form-control" id="breite" name="breite" required>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <label for="hoehe" class="form-label">Höhe</label>
-                    <input type="number" class="form-control" id="hoehe" name="hoehe" required>
-                </div>
+            <div class="mb-3">
+                <label for="length" class="form-label">Länge</label>
+                <input type="number" step="0.01" class="form-control" id="length" name="length" required>
             </div>
-            <button type="submit" class="btn btn-success w-100">Add Material</button>
+            <div class="mb-3">
+                <label for="width" class="form-label">Breite</label>
+                <input type="number" step="0.01" class="form-control" id="width" name="width" required>
+            </div>
+            <div class="mb-3">
+                <label for="height" class="form-label">Höhe</label>
+                <input type="number" step="0.01" class="form-control" id="height" name="height" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Absenden</button>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
