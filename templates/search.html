@@ -1,29 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Modelle suchen</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>Modelle suchen</h1>
-    <form method="POST">
-        <label>Länge (cm):</label><br>
-        <input type="number" step="0.01" name="length" required><br>
-        <label>Breite (cm):</label><br>
-        <input type="number" step="0.01" name="width" required><br>
-        <label>Höhe (cm):</label><br>
-        <input type="number" step="0.01" name="height" required><br><br>
-        <button type="submit">Suchen</button>
-    </form>
-    <h2>Suchergebnisse:</h2>
-    <ul>
-        {% for model in results %}
-        <li>
-            Matrikelnummer: {{ model.matrikelnummer }},
-            Bezeichnung: {{ model.bezeichnung }},
-            Maße: {{ model.length }} x {{ model.width }} x {{ model.height }}
-        </li>
-        {% endfor %}
-    </ul>
-    <a href="/">Zurück</a>
+<body class="bg-light">
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Search Materials</h1>
+
+        <!-- Search Form -->
+        <form method="POST" action="/search" class="mb-4">
+            <div class="input-group">
+                <input type="text" name="query" class="form-control" placeholder="Search materials..." required>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </form>
+
+        <!-- Results Table -->
+        {% if results %}
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Matrikelnummer</th>
+                        <th>Material</th>
+                        <th>Länge</th>
+                        <th>Breite</th>
+                        <th>Höhe</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in results %}
+                    <tr>
+                        <td>{{ result.id }}</td>
+                        <td>{{ result.matrikelnummer }}</td>
+                        <td>{{ result.material }}</td>
+                        <td>{{ result.laenge }}</td>
+                        <td>{{ result.breite }}</td>
+                        <td>{{ result.hoehe }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-warning text-center" role="alert">
+            No results found.
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
