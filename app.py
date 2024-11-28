@@ -102,5 +102,42 @@ def all_models():
     # Ergebnisse an die Vorlage weitergeben
     return render_template('all_models.html', results=results)
 
+@app.route('/delete/<int:model_id>', methods=['POST'])
+def delete_model(model_id):
+    # Modell mit der ID abrufen und löschen
+    model = Model.query.get_or_404(model_id)
+    db.session.delete(model)
+    db.session.commit()
+    return redirect(url_for('all_models'))
+
+@app.route('/edit/<int:model_id>', methods=['GET', 'POST'])
+def edit_model(model_id):
+    # Modell abrufen oder Fehler auslösen
+    model = Model.query.get_or_404(model_id)
+    
+    if request.method == 'POST':
+        # Debugging: Eingabedaten prüfen
+        print("Formulardaten:", request.form)
+        
+        # Formular-Daten verarbeiten
+        model.matrikelnummer = request.form['matrikelnummer']
+        model.bezeichnung = request.form['bezeichnung']
+        model.length = float(request.form['length'])
+        model.width = float(request.form['width'])
+        model.height = float(request.form['height'])
+
+        # Änderungen speichern
+        db.session.commit()
+
+        # Debugging: Erfolgreiche Bearbeitung anzeigen
+        print(f"Modell {model_id} erfolgreich aktualisiert.")
+        
+        return redirect(url_for('all_models'))
+
+    # Debugging: Zu bearbeitendes Modell anzeigen
+    print("Zu bearbeitendes Modell:", model)
+    
+    return render_template('edit_model.html', model=model)
+
 if __name__ == '__main__':
     app.run(debug=True)
