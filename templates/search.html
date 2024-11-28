@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Modelle suchen</title>
+</head>
+<body>
+    <h1>Modelle suchen</h1>
+    <form method="POST">
+        <label>Länge (cm):</label><br>
+        <input type="number" step="0.01" name="length" required><br>
+        <label>Breite (cm):</label><br>
+        <input type="number" step="0.01" name="width" required><br>
+        <label>Höhe (cm):</label><br>
+        <input type="number" step="0.01" name="height" required><br><br>
+        <button type="submit">Suchen</button>
+    </form>
+    <h2>Suchergebnisse:</h2>
+    <ul>
+        {% for model in results %}
+        <li>
+            Matrikelnummer: {{ model.matrikelnummer }},
+            Bezeichnung: {{ model.bezeichnung }},
+            Maße: {{ model.length }} x {{ model.width }} x {{ model.height }}
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="/">Zurück</a>
+</body>
+</html>
