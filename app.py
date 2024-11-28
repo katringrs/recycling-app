@@ -91,5 +91,16 @@ def search():
 
     return render_template('search.html', results=None)
 
+@app.route('/all_models')
+def all_models():
+    # Alle Modelle aus der Datenbank abrufen
+    results = Model.query.all()
+
+    # Debugging: Überprüfen, ob Ergebnisse gefunden wurden
+    print("Alle Modelle:", results)
+
+    # Ergebnisse an die Vorlage weitergeben
+    return render_template('all_models.html', results=results)
+
 if __name__ == '__main__':
     app.run(debug=True)
