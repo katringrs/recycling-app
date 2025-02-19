@@ -71,32 +71,32 @@
                         <th>Anzahl</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {% for model in results %}
-                    {% for material in model.materials %}
-                    <tr>
-                        <td>{{ model.id }}</td>
-                        <td>{{ model.name }}</td>
-                        <td>{{ model.matrikelnummer }}</td>
-                        <td>{{ model.module_name }}</td> 
-                        <td>{{ material.name }}</td>
-                        <td>{{ material.length }}</td>
-                        <td>{{ material.width }}</td>
-                        <td>{{ material.height }}</td>
-                        <td>{{ material.quantity }}</td> 
-                        <td>
-                            {% if material.reserved and not material.archived_at %}
-                                <form method="POST" action="{{ url_for('archive_material', material_id=material.id) }}">
-                                    <button type="submit" class="btn btn-success btn-sm">Als abgeholt markieren</button>
-                                </form>
-                            {% elif material.archived_at %}
-                                <span class="text-muted">Archiviert</span>
-                            {% endif %}
-                        </td>
-                    </tr>
-                    {% endfor %}
-                    {% endfor %}
-                </tbody>
+                    <tbody>
+                        {% for model in results %}
+                        {% for material in model.materials %}
+                        <tr>
+                            <td>{{ model.id }}</td>
+                            <td>{{ model.name }}</td>
+                            <td>{{ model.matrikelnummer }}</td>
+                            <td>{{ model.module_name }}</td> 
+                            <td>{{ material.name }}</td>
+                            <td>{{ material.length }}</td>
+                            <td>{{ material.width }}</td>
+                            <td>{{ material.height }}</td>
+                            <td>{{ material.quantity }}</td> 
+                            <td>
+                                {% if not material.reserved %}
+                                    <form method="POST" action="{{ url_for('reserve_material', material_id=material.id) }}">
+                                        <button type="submit" class="btn btn-warning btn-sm">Reservieren</button>
+                                    </form>
+                                {% else %}
+                                    <span class="text-muted">Reserviert</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% endfor %}
+                    </tbody>
             </table>
         </div>
         {% else %}
