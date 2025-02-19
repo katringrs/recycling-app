@@ -84,6 +84,15 @@
                         <td>{{ material.width }}</td>
                         <td>{{ material.height }}</td>
                         <td>{{ material.quantity }}</td> 
+                        <td>
+                            {% if not material.reserved %}
+                                <form method="POST" action="{{ url_for('reserve_material', material_id=material.id) }}">
+                                    <button type="submit" class="btn btn-warning btn-sm">Reservieren</button>
+                                </form>
+                            {% else %}
+                                <span class="text-muted">Reserviert</span>
+                            {% endif %}
+                        </td>
                     </tr>
                     {% endfor %}
                     {% endfor %}
