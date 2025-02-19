@@ -22,6 +22,11 @@
     <label for="module_name" class="form-label fw-bold">Modul</label>
     <input type="text" id="module_name" name="module_name" class="form-control" required placeholder="Modul eingeben">
 </div>
+<!-- Matrikelnummer hinzufügen -->
+<div class="mb-3">
+    <label for="matrikelnummer" class="form-label fw-bold">Matrikelnummer</label>
+    <input type="text" id="matrikelnummer" name="matrikelnummer" class="form-control" required placeholder="Matrikelnummer eingeben">
+</div>
 
 <h5 class="text-secondary mt-4">Werkstoffe</h5>
 <div id="materials">
@@ -81,7 +86,7 @@
                     <div class="col-md-3">
                         <label class="form-label">Anzahl</label>
                         <input type="number" name="material_quantity[]" class="form-control" required min="1" value="1">
-                    </div>
+                    </div>   
                 </div>
             `;
             container.appendChild(newMaterial);
