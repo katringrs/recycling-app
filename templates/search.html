@@ -15,26 +15,36 @@
         <form method="POST" action="/search" class="p-4 bg-white shadow rounded">
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="id" class="form-label">Modell-ID (falls vorhanden)</label>
+                    <label for="id" class="form-label">Modell-ID (optional)</label>
                     <input type="number" id="id" name="id" class="form-control" placeholder="Modell-ID eingeben">
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="bezeichnung" class="form-label">Material</label>
+                    <label for="bezeichnung" class="form-label">Material (optional)</label>
                     <input type="text" id="bezeichnung" name="bezeichnung" class="form-control" placeholder="Materialbezeichnung eingeben">
                 </div>
             </div>
             <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="module_name" class="form-label">Modul (optional)</label>
+                    <input type="text" id="module_name" name="module_name" class="form-control" placeholder="Modul eingeben">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="quantity" class="form-label">Mindestanzahl (optional)</label>
+                    <input type="number" id="quantity" name="quantity" class="form-control" placeholder="Anzahl eingeben" min="1">
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-4 mb-3">
-                    <label for="length" class="form-label">Länge</label>
-                    <input type="number" step="0.01" id="length" name="length" class="form-control" placeholder="Länge eingeben" required>
+                    <label for="length" class="form-label">Länge (optional)</label>
+                    <input type="number" step="0.01" id="length" name="length" class="form-control" placeholder="Länge eingeben">
                 </div>
                 <div class="col-md-4 mb-3">
-                    <label for="width" class="form-label">Breite</label>
-                    <input type="number" step="0.01" id="width" name="width" class="form-control" placeholder="Breite eingeben" required>
+                    <label for="width" class="form-label">Breite (optional)</label>
+                    <input type="number" step="0.01" id="width" name="width" class="form-control" placeholder="Breite eingeben">
                 </div>
                 <div class="col-md-4 mb-3">
-                    <label for="height" class="form-label">Höhe</label>
-                    <input type="number" step="0.01" id="height" name="height" class="form-control" placeholder="Höhe eingeben" required>
+                    <label for="height" class="form-label">Höhe (optional)</label>
+                    <input type="number" step="0.01" id="height" name="height" class="form-control" placeholder="Höhe eingeben">
                 </div>
             </div>
             <button type="submit" class="btn btn-primary w-100">Suchen</button>
@@ -48,17 +58,17 @@
         {% if results %}
         <div class="table-responsive mt-4">
             <table class="table table-striped table-hover">
-                <thead>
+                <thead class="table-primary">
                     <tr>
                         <th>ID</th>
                         <th>Modellname</th>
                         <th>Matrikelnummer</th>
-                        <th>Modul</th> <!-- 📌 Modul hinzugefügt -->
+                        <th>Modul</th>
                         <th>Werkstoff</th>
                         <th>Länge (cm)</th>
                         <th>Breite (cm)</th>
                         <th>Höhe (cm)</th>
-                        <th>Anzahl</th> <!-- 📌 Anzahl hinzugefügt -->
+                        <th>Anzahl</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,13 +78,14 @@
                         <td>{{ model.id }}</td>
                         <td>{{ model.name }}</td>
                         <td>{{ model.matrikelnummer }}</td>
-                        <td>{{ model.module_name }}</td> <!-- 📌 Modul anzeigen -->
+                        <td>{{ model.module_name }}</td> 
                         <td>{{ material.name }}</td>
                         <td>{{ material.length }}</td>
                         <td>{{ material.width }}</td>
                         <td>{{ material.height }}</td>
-                        <td>{{ material.quantity }}</td> <!-- 📌 Anzahl anzeigen -->
+                        <td>{{ material.quantity }}</td> 
                     </tr>
+                    {% endfor %}
                     {% endfor %}
                 </tbody>
             </table>
