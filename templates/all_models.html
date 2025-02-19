@@ -19,7 +19,9 @@
                         <th>ID</th>
                         <th>Modellname</th>
                         <th>Matrikelnummer</th>
+                        <th>Modul</th> <!-- 📌 Neu: Modul anzeigen -->
                         <th>Werkstoffe</th>
+                        <th>Anzahl</th> <!-- 📌 Neu: Anzahl anzeigen -->
                     </tr>
                 </thead>
                 <tbody>
@@ -28,6 +30,7 @@
                         <td>{{ model.id }}</td>
                         <td>{{ model.name }}</td>
                         <td>{{ model.matrikelnummer }}</td>
+                        <td>{{ model.module_name }}</td> <!-- 📌 Neu: Modul anzeigen -->
                         <td>
                             <ul class="list-unstyled mb-0">
                                 {% for material in model.materials %}
@@ -37,6 +40,13 @@
                                     B: {{ material.width }} cm, 
                                     H: {{ material.height }} cm
                                 </li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                        <td>
+                            <ul class="list-unstyled mb-0">
+                                {% for material in model.materials %}
+                                <li>{{ material.quantity }}</li> <!-- 📌 Neu: Anzahl anzeigen -->
                                 {% endfor %}
                             </ul>
                         </td>
