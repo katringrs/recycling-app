@@ -51,22 +51,29 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Modellname</th>
                         <th>Matrikelnummer</th>
-                        <th>Bezeichnung</th>
-                        <th>Länge</th>
-                        <th>Breite</th>
-                        <th>Höhe</th>
+                        <th>Modul</th> <!-- 📌 Modul hinzugefügt -->
+                        <th>Werkstoff</th>
+                        <th>Länge (cm)</th>
+                        <th>Breite (cm)</th>
+                        <th>Höhe (cm)</th>
+                        <th>Anzahl</th> <!-- 📌 Anzahl hinzugefügt -->
                     </tr>
                 </thead>
                 <tbody>
-                    {% for result in results %}
+                    {% for model in results %}
+                    {% for material in model.materials %}
                     <tr>
-                        <td>{{ result['id'] }}</td>
-                        <td>{{ result['matrikelnummer'] }}</td>
-                        <td>{{ result['bezeichnung'] }}</td>
-                        <td>{{ result['length'] }}</td>
-                        <td>{{ result['width'] }}</td>
-                        <td>{{ result['height'] }}</td>
+                        <td>{{ model.id }}</td>
+                        <td>{{ model.name }}</td>
+                        <td>{{ model.matrikelnummer }}</td>
+                        <td>{{ model.module_name }}</td> <!-- 📌 Modul anzeigen -->
+                        <td>{{ material.name }}</td>
+                        <td>{{ material.length }}</td>
+                        <td>{{ material.width }}</td>
+                        <td>{{ material.height }}</td>
+                        <td>{{ material.quantity }}</td> <!-- 📌 Anzahl anzeigen -->
                     </tr>
                     {% endfor %}
                 </tbody>
