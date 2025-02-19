@@ -17,35 +17,39 @@
                 <input type="text" id="name" name="name" class="form-control" required placeholder="Modellname eingeben">
             </div>
 
-            <div class="mb-3">
-                <label for="matrikelnummer" class="form-label fw-bold">Matrikelnummer</label>
-                <input type="text" id="matrikelnummer" name="matrikelnummer" class="form-control" required placeholder="Matrikelnummer eingeben">
+            <!-- Modul hinzufügen -->
+<div class="mb-3">
+    <label for="module_name" class="form-label fw-bold">Modul</label>
+    <input type="text" id="module_name" name="module_name" class="form-control" required placeholder="Modul eingeben">
+</div>
+
+<h5 class="text-secondary mt-4">Werkstoffe</h5>
+<div id="materials">
+    <div class="material p-3 border rounded mb-3">
+        <label class="form-label">Werkstoffname</label>
+        <input type="text" name="material_name[]" class="form-control" required placeholder="Werkstoff eingeben">
+        <div class="row mt-2">
+            <div class="col-md-3">
+                <label class="form-label">Länge (cm)</label>
+                <input type="number" step="0.01" name="material_length[]" class="form-control" required>
             </div>
-
-            <h5 class="text-secondary mt-4">Werkstoffe</h5>
-            <div id="materials">
-                <div class="material p-3 border rounded mb-3">
-                    <label class="form-label">Werkstoffname</label>
-                    <input type="text" name="material_name[]" class="form-control" required placeholder="Werkstoff eingeben">
-                    <div class="row mt-2">
-                        <div class="col-md-4">
-                            <label class="form-label">Länge (cm)</label>
-                            <input type="number" step="0.01" name="material_length[]" class="form-control" required>
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">Breite (cm)</label>
-                            <input type="number" step="0.01" name="material_width[]" class="form-control" required>
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">Höhe (cm)</label>
-                            <input type="number" step="0.01" name="material_height[]" class="form-control" required>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-3">
+                <label class="form-label">Breite (cm)</label>
+                <input type="number" step="0.01" name="material_width[]" class="form-control" required>
             </div>
+            <div class="col-md-3">
+                <label class="form-label">Höhe (cm)</label>
+                <input type="number" step="0.01" name="material_height[]" class="form-control" required>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Anzahl</label>
+                <input type="number" name="material_quantity[]" class="form-control" required min="1" value="1">
+            </div>
+        </div>
+    </div>
+</div>
 
-            <button type="button" class="btn btn-outline-primary mb-3" onclick="addMaterial()">+ Werkstoff hinzufügen</button>
-
+<button type="button" class="btn btn-outline-primary mb-3" onclick="addMaterial()">+ Werkstoff hinzufügen</button>
             <div class="d-flex justify-content-between">
                 <a href="/" class="btn btn-outline-secondary">Zurück zur Startseite</a>
                 <button type="submit" class="btn btn-primary">Modell speichern</button>
@@ -62,17 +66,21 @@
                 <label class="form-label">Werkstoffname</label>
                 <input type="text" name="material_name[]" class="form-control" required placeholder="Werkstoff eingeben">
                 <div class="row mt-2">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label">Länge (cm)</label>
                         <input type="number" step="0.01" name="material_length[]" class="form-control" required>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label">Breite (cm)</label>
                         <input type="number" step="0.01" name="material_width[]" class="form-control" required>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label">Höhe (cm)</label>
                         <input type="number" step="0.01" name="material_height[]" class="form-control" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Anzahl</label>
+                        <input type="number" name="material_quantity[]" class="form-control" required min="1" value="1">
                     </div>
                 </div>
             `;
