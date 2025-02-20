@@ -9,10 +9,21 @@
 <body class="bg-light">
     <div class="container my-5">
         <h1 class="text-center text-primary mb-4">Admin Login</h1>
+
+        {% if error %}
+        <div class="alert alert-danger text-center" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
+
         <form method="POST" class="text-center">
             <input type="password" name="password" class="form-control mb-3" placeholder="Passwort eingeben" required>
             <button type="submit" class="btn btn-primary">Einloggen</button>
         </form>
+        
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-outline-secondary">Zurück zur Startseite</a>
+        </div>
     </div>
 </body>
 </html>
