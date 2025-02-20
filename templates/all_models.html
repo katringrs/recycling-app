@@ -51,9 +51,22 @@
                                 {% endfor %}
                             </ul>
                         </td>
+                        <td>
+                            <ul class="list-unstyled mb-0">
+                                {% for material in model.materials %}
+                                <li>
+                                    {% if material.reserved %}
+                                        <span class="text-danger">Ja</span>
+                                    {% else %}
+                                        <span class="text-success">Nein</span>
+                                    {% endif %}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </td>
                     </tr>
                     {% endfor %}
-                </tbody>
+                </tbody> 
             </table>
         </div>
         {% else %}
